@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("todoList.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 520, Color.BLACK);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Todo List");
         stage.setScene(scene);
         stage.show();
