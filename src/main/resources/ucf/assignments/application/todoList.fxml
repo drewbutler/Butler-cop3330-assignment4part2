@@ -20,8 +20,8 @@
    <top>
       <ToolBar prefHeight="38.0" prefWidth="610.0" BorderPane.alignment="CENTER">
         <items>
-            <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="25.0" prefWidth="314.0" text="Save" />
-          <Button alignment="TOP_RIGHT" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="265.0" text="Load" />
+            <Button alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#savePressed" prefHeight="25.0" prefWidth="314.0" text="Save" />
+          <Button fx:id="loadButton" alignment="TOP_RIGHT" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#LoadPressed" prefHeight="25.0" prefWidth="265.0" text="Load" />
         </items>
       </ToolBar>
    </top>
@@ -59,23 +59,23 @@
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <TextField />
-                                    <DatePicker />
-                                    <CheckBox mnemonicParsing="false" text="CheckBox" />
+                                    <DatePicker fx:id="myDatePicker" onAction="#getDate" />
+                                    <CheckBox fx:id="checkNow" mnemonicParsing="false" text="CheckBox" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Add New Task" />
+                                    <Button fx:id="addNewtask" mnemonicParsing="false" onAction="#NewTaskPressed" text="Add New Task" />
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
                      </bottom>
                      <center>
-                        <TableView prefHeight="249.0" prefWidth="270.0" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tableView" prefHeight="249.0" prefWidth="270.0" BorderPane.alignment="CENTER">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Task" />
-                            <TableColumn prefWidth="75.0" text="Due Date" />
+                            <TableColumn fx:id="taskNameCol" prefWidth="75.0" text="Task" />
+                            <TableColumn fx:id="DueDateCol" prefWidth="75.0" text="Due Date" />
                               <TableColumn prefWidth="75.0" text="Completed" />
                           </columns>
                         </TableView>
@@ -88,7 +88,7 @@
                               <ListView prefHeight="327.0" prefWidth="248.0" />
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="47.0" prefWidth="248.0" text="Create New List" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#NewlistPressed" prefHeight="47.0" prefWidth="248.0" text="Create New List" />
                                  </children>
                               </HBox>
                            </children>

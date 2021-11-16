@@ -4,25 +4,46 @@
  */
 package ucf.assignments.application;
 
-import javafx.fxml.FXML;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
-public class AppController {
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ResourceBundle;
+
+
+public class AppController implements Initializable {
+
+    @FXML private TableView<TodoList> tableView;
+    @FXML private TableColumn<TodoList, String> taskNameCol;
+    @FXML private TableColumn<TodoList, LocalDate> DueDateCol;
+
+    @FXML
+    private DatePicker myDatePicker;
 
     @FXML
     public void savePressed(ActionEvent actionEvent) {
         //Saves the entire list
+
     }
 
     @FXML
     public void LoadPressed(ActionEvent actionEvent) {
-        //Load a new list
+
     }
 
     @FXML
     public void NewlistPressed(ActionEvent actionEvent) {
-        //Creates a new list
+
     }
     @FXML
     public void listSaved(ActionEvent actionEvent) {
@@ -43,6 +64,27 @@ public class AppController {
     @FXML
     public void NewTaskPressed(ActionEvent actionEvent) {
         //Adds a new task to the list
+        System.out.println("text");
+
+    }
+    public void getDate(ActionEvent event) {
+        LocalDate myDate = myDatePicker.getValue();
+        System.out.println(myDate.toString());
     }
 
+
+    public void initialize(URL url, ResourceBundle rb) {
+
+        taskNameCol.setCellValueFactory(new PropertyValueFactory<TodoList, String>("taskNameCol"));
+        DueDateCol.setCellValueFactory(new PropertyValueFactory<TodoList, LocalDate>("DueDate"));
+
+        tableView.setItems(getItems());
+    }
+
+    public ObservableList<TodoList> getItems() {
+        ObservableList<TodoList> items = FXCollections.observableArrayList();
+        items.add(new TodoList("Wash Dishes", LocalDate.of(2021, Month.NOVEMBER, 16)));
+
+        return items;
+    }
 }
